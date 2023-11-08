@@ -22,6 +22,6 @@ category:
 company:
     - name
     - logo
-    - description
+    - presentation
     - website
     - email
