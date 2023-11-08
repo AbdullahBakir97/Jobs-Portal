@@ -1,0 +1,75 @@
+.job-post-company{
+    @media #{$xs}{
+       padding-top: 70px;
+       padding-bottom: 70px;
+    }
+    @media #{$sm}{
+       padding-top: 70px;
+       padding-bottom: 70px;
+    }
+    @media #{$md}{
+       padding-top: 70px;
+       padding-bottom: 70px;
+    }
+}
+    .post-details2{
+       
+        ul{
+            padding-left: 30px;
+            li{
+                list-style-type: circle;
+            }
+        }
+    }
+
+    .post-details3{
+        padding: 30px 30px 30px 30px;
+        border: 1px solid #ededed;
+    ul{
+        li{
+            
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            &:last-child{
+                margin-bottom: 50px;
+            }
+        }
+    }
+}
+
+.post-details4 {
+    span{
+       color: #5b5c6e;
+       font-weight: 700;
+       margin-bottom: 10px; 
+       display: block;
+       font-size: 18px;
+    }
+    p{
+        margin-bottom: 30px;
+        display: block;
+    }
+    ul{
+        li{
+            color: #5b5c6e;
+            font-weight: 700;
+            font-size: 18px;
+            display: block;
+            span{
+                color: #5b5c6e;
+                font-weight: 400;
+                font-size: 16px;
+                display: inline-block;
+                padding-left: 18px;
+            }
+
+        }
+    }
+}
+
+.company-img-details {
+    @media #{$lg}{
+        margin-bottom: 20px;
+     }
+}

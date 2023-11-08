@@ -1,0 +1,46 @@
+
+// Pagination Area
+.pagination-area{
+    @media #{$lg}{
+        padding-bottom: 50px;
+    }
+    @media #{$md}{
+        padding-bottom: 50px;
+    }
+    @media #{$sm}{
+        padding-bottom: 50px;
+    }
+    @media #{$xs}{
+        padding-bottom: 50px;
+    }
+    .page-item {
+        margin: 0;
+    }
+    .page-item:first-child {margin: 0;}
+    .page-link {
+        border:0;
+        font-size: 15px;
+        text-align: center;
+        background: none;
+        box-shadow: none;
+        outline: 0;
+        color:#777777;
+        padding: 11px 12px;
+        background: #fff;
+        margin: 0 3px;
+        border-radius: 5px;
+        border: 1px solid #f0f0f0;
+    }
+    .page-link:hover {
+        color:$theme-color;
+    }
+    .page-item.active .page-link {
+        z-index: 1;
+        border: 0;
+        position: relative;
+        box-shadow: none;
+        outline: 0;
+        background:#242b5e;
+        color:#fff;
+    }
+}
