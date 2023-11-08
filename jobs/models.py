@@ -33,7 +33,7 @@ class Job(models.Model):
 class Category(models.Model):
     name = models.CharField(_('Name'),max_length=150)
     image = models.ImageField(_('Image'),upload_to='categories')
-    job_count = models.IntegerField(_('Job Count'),max_length=100000)
+    job_count = models.IntegerField(_('Job Count'),)
     slug = models.SlugField(null=True,blank=True)
 
     def __str__(self):
