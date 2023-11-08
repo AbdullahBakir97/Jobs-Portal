@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # my apps
     'jobs',
+    'faker',
 ]
 
 MIDDLEWARE = [

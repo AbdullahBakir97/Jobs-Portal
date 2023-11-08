@@ -8,3 +8,7 @@ class JobList(generic.ListView):
 
 class JobDetail(generic.DetailView):
     model = Job
+
+
+class CategoryList(generic.ListView):
+    model = Category
