@@ -3,22 +3,23 @@ from collections.abc import Iterable
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.text import slugify
+from django.utils.translation import gettext_lazy as _
 
 NATURE_TYPES = (('Full Time','Full Time'),('Part Time','Part Time'),('Remote','Remote'),('Freelance','Freelance'),)
 
 class Job(models.Model):
-    title = models.CharField(max_length=150)
-    category = models.ForeignKey('Category',related_name='job_category',on_delete=models.SET_NULL,null=True,blank=True)
-    agency = models.ForeignKey('Company',related_name='job_company',on_delete=models.SET_NULL,null=True,blank=True)
-    location = models.CharField(max_length=150)
-    salary = models.FloatField()
-    created_at = models.DateTimeField(default=timezone.now)
-    vacancy = models.IntegerField()
-    job_nature = models.CharField(max_length=20,choices=NATURE_TYPES)
-    application_date = models.DateField()
-    description = models.TextField(max_length=50000)
-    knowledge_requirements = models.TextField(max_length=10000)
-    education_experience = models.TextField(max_length=10000)
+    title = models.CharField(_('Title'),max_length=150)
+    category = models.ForeignKey('Category',verbose_name=_('Category'),related_name='job_category',on_delete=models.SET_NULL,null=True,blank=True)
+    agency = models.ForeignKey('Company',verbose_name=_('Company'),related_name='job_company',on_delete=models.SET_NULL,null=True,blank=True)
+    location = models.CharField(_('Location'),max_length=150)
+    salary = models.FloatField(_('Salary'),)
+    created_at = models.DateTimeField(_('Created at'),default=timezone.now)
+    vacancy = models.IntegerField(_('Vacancy'),)
+    job_nature = models.CharField(_('Job Nature'),max_length=20,choices=NATURE_TYPES)
+    application_date = models.DateField(_('Application Date'),)
+    description = models.TextField(_('Description'),max_length=50000)
+    knowledge_requirements = models.TextField(_('Knowledge Requirements'),max_length=10000)
+    education_experience = models.TextField(_('Education Experience'),max_length=10000)
     slug = models.SlugField(null=True,blank=True)
 
     def __str__(self):
@@ -30,9 +31,9 @@ class Job(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=150)
-    image = models.ImageField(upload_to='categories')
-    job_count = models.IntegerField(max_length=100000)
+    name = models.CharField(_('Name'),max_length=150)
+    image = models.ImageField(_('Image'),upload_to='categories')
+    job_count = models.IntegerField(_('Job Count'),max_length=100000)
     slug = models.SlugField(null=True,blank=True)
 
     def __str__(self):
@@ -43,11 +44,11 @@ class Category(models.Model):
         super(Category, self).save(*args, **kwargs)
 
 class Company(models.Model):
-    name = models.CharField(max_length=150)
-    logo = models.ImageField(upload_to='company')
-    presentation = models.TextField(max_length=10000)
-    website = models.TextField(max_length=300)
-    email = models.TextField(max_length=300)
+    name = models.CharField(_('Name'),max_length=150)
+    logo = models.ImageField(_('Logo'),upload_to='company')
+    presentation = models.TextField(_('Presentation'),max_length=10000)
+    website = models.TextField(_('Website'),max_length=300)
+    email = models.TextField(_('Email'),max_length=300)
     slug = models.SlugField(null=True,blank=True)
 
     def __str__(self):
