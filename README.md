@@ -41,43 +41,49 @@ Getting started with Jobs Portal is straightforward. Follow these steps to set u
 
 ```bash
 git clone https://github.com/AbdullahBakir97/Jobs-Portal.git
+```
 
-	2.	Navigate to the Project Directory: Move into the project directory:
+2.**Navigate to the Project Directory**: Move into the project directory:
     
 ```bash
 cd Jobs-Portal
+```
 
-	3.	Create and Activate a Virtual Environment: Set up a virtual environment and activate it:
+3.**Create and Activate a Virtual Environment**: Set up a virtual environment and activate it:
     
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows, use venv\Scripts\activate
+```
 
-	4.	Install Required Dependencies: Install the necessary dependencies for the project:
+4.**Install Required Dependencies**: Install the necessary dependencies for the project:
 
 ```bash
 pip install -r requirements.txt
+```
 
-	5.	Apply Database Migrations: Apply database migrations to set up the database:
+5.**Apply Database Migrations**: Apply database migrations to set up the database:
 
 ```bash
 python manage.py migrate
+```
 
-	6.	Create a Superuser Account: Create a superuser account for administrative access:
+6.**Create a Superuser Account**: Create a superuser account for administrative access:
 
 ```bash
 python manage.py createsuperuser
+```
 
-	7.	Start the Development Server: Launch the development server:
+7.**Start the Development Server**: Launch the development server:
 
 ```bash
 python manage.py runserver
-
-	8.	Access the Admin Panel: 
-    Configure your Jobs Portal by accessing the admin panel at :
+```
+8.**Access the Admin Panel**: Configure your Jobs Portal by accessing the admin panel at :
     
 ```bash
 http://localhost:8000/admin/.
+```
 
 ## Using Jobs Portal
 
