@@ -37,7 +37,7 @@ Jobs Portal serves as a centralized hub for job-related activities, providing fe
 
 Getting started with Jobs Portal is straightforward. Follow these steps to set up your recruitment platform:
 
-1. **Clone the Repository**: Begin by cloning the project repository:
+1.**Clone the Repository**: Begin by cloning the project repository:
 
 ```bash
 git clone https://github.com/AbdullahBakir97/Jobs-Portal.git
