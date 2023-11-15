@@ -1,7 +1,7 @@
 # Jobs Portal
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/Python-3.8%2B-brightgreen)](https://www.python.org/)
-[![Django](https://img.shields.io/badge/Django-3.2%2B-brightgreen)](https://www.djangoproject.com/)
+[![Python](https://img.shields.io/badge/Python-3.12%2B-brightgreen)](https://www.python.org/)
+[![Django](https://img.shields.io/badge/Django-4.2%2B-brightgreen)](https://www.djangoproject.com/)
 
 # Empower Your Recruitment Journey with Jobs Portal
 
