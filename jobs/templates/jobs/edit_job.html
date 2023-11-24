@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<main>
+
+  <!-- Hero Area -->
+  <div class="slider-area">
+    <div class="single-slider section-overly slider-height2">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2>Edit Job</h2> 
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+
+  <!-- Job Form -->
+  <div class="job-post-company">
+
+    <div class="container">
+
+      <div class="row justify-content-between">
+
+        <!-- Left Content -->
+        <div class="col-xl-7 col-lg-8">
+
+          <div class="single-job-items">
+
+            <form method="POST" action="{% url 'edit_job' job.id %}">
+              {% csrf_token %}
+              
+              <!-- form fields -->
+              
+              <button type="submit">Update Job</button>
+
+            </form>
+
+          </div>
+
+        </div>
+
+        <!-- Right Content -->
+        <div class="col-xl-4 col-lg-4">
+
+          <!-- job overview -->
+          
+          <!-- company info -->
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+{% endblock %}

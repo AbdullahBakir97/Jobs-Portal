@@ -18,7 +18,7 @@ def add_companies(n):
             website=fake.domain_name(),
             email=fake.ascii_email(),
         )
-    print(f'{n} Companyes was created successfully')
+    print(f'{n} Companies was created successfully')
 
 def add_categories(n):
     images=['1.png','2.png']
@@ -30,7 +30,7 @@ def add_categories(n):
             job_count=random.randint(0,1),
 
         )
-    print(f'{n} Categorys was created successfully')
+    print(f'{n} Categories was created successfully')
 
 def add_jobs(n):
    fake=Faker()

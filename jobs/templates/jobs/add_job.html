@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<main>
+
+  <!-- Hero Area Start-->
+  <div class="slider-area ">
+    <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/about.jpg">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2>Add Job</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Hero Area End -->
+
+  <!-- Job Post Form Start -->
+  <div class="job-post-company pt-120 pb-120">
+    <div class="container">
+      <div class="row justify-content-between">
+        <!-- Left Content -->
+        <div class="col-xl-7 col-lg-8">
+          <!-- Job Form -->
+          <div class="single-job-items mb-50">
+            <form method="POST" action="{% url 'add_job' %}">
+              {% csrf_token %}
+
+              <div class="company-img company-img-details">
+                <a href="#"><img src="{{ form.agency.logo.url }}" alt=""></a>
+              </div>
+              <div class="job-tittle">
+                <h4>{{ form.title.label }} {{ form.title }}</h4>
+                <ul>
+                  <li class="mb-10"><i class="fas fa-map-marker-alt"></i>{{ form.location.label }} {{ form.location }}</li>
+                  <li class="mb-10">{{ form.salary.label }} {{ form.salary }}</li>
+                </ul>
+              </div>
+
+              <div class="post-details1 mb-50">
+                <div class="small-section-tittle">
+                  <h4>Job Description</h4>
+                </div>
+                {{ form.description }}
+              </div>
+
+              <div class="post-details2 mb-50">
+                <div class="small-section-tittle">
+                  <h4>Required Knowledge, Skills, and Abilities</h4>
+                </div>
+                {{ form.knowledge_requirements }}
+              </div>
+
+              <div class="post-details2 mb-50">
+                <div class="small-section-tittle">
+                  <h4>Education + Experience</h4>
+                </div>
+                {{ form.education_experience }}
+              </div>
+
+              <button type="submit" class="btn">Add Job</button>
+            </form>
+          </div>
+          <!-- Job Form End -->
+        </div>
+
+        <!-- Right Content -->
+        <div class="col-xl-4 col-lg-4">
+          <div class="post-details3 mb-50">
+            <div class="small-section-tittle">
+              <h4>Additional Information</h4>
+            </div>
+            <ul>
+              <li class="mb-10">{{ form.category.label }} {{ form.category }}</li>
+              <li>{{ form.agency.label }} {{ form.agency }}</li>
+              <li>{{ form.vacancy.label }} {{ form.vacancy }}</li>
+              <li>{{ form.job_nature.label }} {{ form.job_nature }}</li>
+              <li>{{ form.application_date.label }} {{ form.application_date }}</li>
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Job Post Form End -->
+
+</main>
+
+{% endblock body %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+        <h2>Operations</h2>
+
+        <!-- Add Job Form Goes Here -->
+        <h3>Add Job</h3>
+        <form method="post" action="{% url 'add_job' %}">
+            {% csrf_token %}
+            {{ job_form.as_p }}
+            <button type="submit">Add Job</button>
+        </form>
+
+        <!-- List of Jobs Goes Here -->
+        <!-- Display a table or other layout to show existing jobs -->
+        <h3>Jobs</h3>
+        <ul>
+            {% for job in jobs %}
+                <li>
+                    <p><strong>Title:</strong> {{ job.title }}</p>
+                    <p><strong>Description:</strong> {{ job.description }}</p>
+                    <p><strong>Category:</strong> {{ job.category }}</p>
+                    <a href="{% url 'edit_job' job.slug %}">Edit</a>
+                    <a href="{% url 'delete_job' job.slug %}">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Add Company Form Goes Here -->
+        <h3>Add Company</h3>
+        <form method="post" action="{% url 'add_company' %}">
+            {% csrf_token %}
+            {{ company_form.as_p }}
+            <button type="submit">Add Company</button>
+        </form>
+
+        <!-- List of Companies Goes Here -->
+        <!-- Display a table or other layout to show existing companies -->
+        <h3>Companies</h3>
+        <ul>
+            {% for company in companies %}
+                <li>
+                    <p><strong>Name:</strong> {{ company.name }}</p>
+                    <p><strong>Description:</strong> {{ company.description }}</p>
+                    <a href="{% url 'edit_company' company.slug %}">Edit</a>
+                    <a href="{% url 'delete_company' company.slug %}">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock body %}

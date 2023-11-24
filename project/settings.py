@@ -38,9 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 3th party apps
+    'faker',
+
     # my apps
     'jobs',
-    'faker',
+    
 ]
 
 MIDDLEWARE = [
@@ -58,7 +61,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['template'],
+        'DIRS': ['template', 'jobs/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

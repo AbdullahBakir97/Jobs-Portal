@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <h2>Confirm Deletion</h2>
+        <p>Are you sure you want to delete the job "{{ object }}"?</p>
+        <form method="post" action="{% url 'delete_job' slug=object.slug %}">
+            {% csrf_token %}
+            <button type="submit">Yes, delete</button>
+        </form>
+        <a href="{% url 'job_detail' slug=object.slug %}">Cancel</a>
+    </div>
+{% endblock %}
