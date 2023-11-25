@@ -1,20 +1,64 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block body %}
-    <main>
-        <div class="container">
-            <h2>Delete Job</h2>
 
-            <!-- Display Job Details -->
-            <p><strong>Title:</strong> {{ job.title }}</p>
-            <p><strong>Description:</strong> {{ job.description }}</p>
-            <p><strong>Category:</strong> {{ job.category }}</p>
+<main>
 
-            <!-- Add a confirmation form for deleting the job -->
-            <form method="POST" action="{% url 'delete_job' job.id %}">
-                {% csrf_token %}
-                <button type="submit">Delete</button>
-            </form>
+  <!-- Hero Area Start-->
+  <div class="slider-area ">
+    <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="{% static 'en/img/hero/about.jpg' %}">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2>Delete Job</h2>
+            </div>
+          </div>
         </div>
-    </main>
-{% endblock body %}
+      </div>
+    </div>
+  </div>
+  <!-- Hero Area End -->
+
+  <!-- Job Post Form Start -->
+  <div class="job-post-company pt-120 pb-120">
+    <div class="container">
+      <div class="row justify-content-between">
+        <!-- Left Content -->
+        <div class="col-xl-7 col-lg-8">
+          <!-- Job Form -->
+          <div class="single-job-items mb-50">
+            <form method="POST" action="{% url 'delete_job' job.id %}">
+              {% csrf_token %}
+
+              <div class="company-img company-img-details">
+                <a href="#"><img src="{{ object.agency.logo.url }}" alt=""></a>
+              </div>
+              <div class="job-tittle">
+                <h3>{{ object.title }}</h3>
+                <ul>
+                  <li><i class="fas fa-map-marker-alt"></i> Location: {{ form.location.label }} {{ object.location }}</li>
+                  <li>Salary: {{ object.salary }}</li>
+                  <li>Category: {{ object.category }}</li>
+                  <li>Company: {{ object.agency }}</li>
+                  <li>Vacancy: {{ object.vacancy }}</li>
+                  <li>Job Nature: {{ object.job_nature }}</li>
+                  <li>Application Date: {{ object.application_date }}</li>
+                </ul>
+              </div>
+
+              <button type="submit" class="btn mb-10">Delete Job</button>
+            </form>
+          </div>
+          <!-- Job Form End -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Job Post Form End -->
+
+</main>
+
+{% endblock %}

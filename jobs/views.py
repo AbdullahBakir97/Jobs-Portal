@@ -32,8 +32,24 @@ class JobUpdate(UpdateView):
 
 class JobDelete(generic.DeleteView):
     model = Job
+    template_name = 'jobs/delete_job.html'
     success_url = reverse_lazy('job_list')
+
+    #def get(self, request, *args, **kwargs):
+        # Display the initial delete page
+        #return render(request, self.template_name, {'job': self.get_object()})
+
+class JobDeleteConfirm(generic.DeleteView):
+    model = Job
     template_name = 'jobs/delete_job_confirm.html'
+    success_url = reverse_lazy('job_list')
+
+    def post(self, request, *args, **kwargs):
+        # Handle the actual deletion on a POST request
+        job = self.get_object()
+        job.delete()
+        return render(request, self.template_name, {'job': job})
+
 
 
 class CategoryList(generic.ListView):

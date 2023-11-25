@@ -32,7 +32,7 @@
               {% csrf_token %}
 
               <div class="company-img company-img-details">
-                <a href="#"><img src="{{ form.agency.logo.url }}" alt=""></a>
+                <a href="#"><img src="{{ object.agency.logo.url }}" alt=""></a>
               </div>
               <div class="job-tittle">
                 <h3>{{ form.title.label }} {{ form.title }}</h3>
@@ -62,8 +62,8 @@
                 </div>
                 {{ form.education_experience }}
               </div>
-
               <button type="submit" class="btn">Update Job</button>
+              <button type="delete" class="btn">Delete Job</button>
             </form>
           </div>
           <!-- Job Form End -->

@@ -32,7 +32,7 @@
               {% csrf_token %}
 
               <div class="company-img company-img-details">
-                <a href="#"><img src="{{ form.agency.logo.url }}" alt=""></a>
+                <a href="#"><img src="{{ object.agency.logo.url }}" alt=""></a>
               </div>
               <div class="job-tittle">
                 <h4>{{ form.title.label }} {{ form.title }}</h4>
@@ -76,7 +76,7 @@
               <h3>Additional Information</h3>
             </div>
             <ul>
-              <li class="mb-10">{{ form.category.label }} {{ form.category }}</li>
+              <li>{{ form.category.label }} {{ form.category }}</li>
               <li>{{ form.agency.label }} {{ form.agency }}</li>
               <li>{{ form.vacancy.label }} {{ form.vacancy }}</li>
               <li>{{ form.job_nature.label }} {{ form.job_nature }}</li>
