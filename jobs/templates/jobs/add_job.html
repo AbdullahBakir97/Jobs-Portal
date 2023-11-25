@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block body %}
 
 <main>
 
   <!-- Hero Area Start-->
   <div class="slider-area ">
-    <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/about.jpg">
+    <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="{% static 'en/img/hero/about.jpg' %}">
       <div class="container">
         <div class="row">
           <div class="col-xl-12">
@@ -44,21 +44,21 @@
 
               <div class="post-details1 mb-50">
                 <div class="small-section-tittle">
-                  <h4>Job Description</h4>
+                  <h3>Job Description</h3>
                 </div>
                 {{ form.description }}
               </div>
 
               <div class="post-details2 mb-50">
                 <div class="small-section-tittle">
-                  <h4>Required Knowledge, Skills, and Abilities</h4>
+                  <h3>Required Knowledge, Skills, and Abilities</h3>
                 </div>
                 {{ form.knowledge_requirements }}
               </div>
 
               <div class="post-details2 mb-50">
                 <div class="small-section-tittle">
-                  <h4>Education + Experience</h4>
+                  <h3>Education + Experience</h3>
                 </div>
                 {{ form.education_experience }}
               </div>
@@ -73,7 +73,7 @@
         <div class="col-xl-4 col-lg-4">
           <div class="post-details3 mb-50">
             <div class="small-section-tittle">
-              <h4>Additional Information</h4>
+              <h3>Additional Information</h3>
             </div>
             <ul>
               <li class="mb-10">{{ form.category.label }} {{ form.category }}</li>

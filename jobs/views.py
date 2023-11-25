@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from django.views import generic
 from django.urls import reverse_lazy
+from django.views.generic import UpdateView
 from .models import Job, Category, Company
 from .forms import JobForm  
 
@@ -21,10 +22,13 @@ class JobCreate(generic.CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class JobUpdate(generic.UpdateView):
+
+class JobUpdate(UpdateView):
     model = Job
     form_class = JobForm
     template_name = 'jobs/edit_job.html'
+    success_url = '/jobs/'
+
 
 class JobDelete(generic.DeleteView):
     model = Job
