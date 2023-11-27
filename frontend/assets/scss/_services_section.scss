@@ -1,0 +1,49 @@
+.our-services{
+    .single-services{
+        border: 1px solid rgb(218, 252, 239);
+        padding: 44px 0;
+        @include transition(.4s);
+        .services-ion{
+            span{
+                font-size: 60px;
+                margin-bottom: 13px;
+                color: #014b85;
+                @include transition(.3s);
+            }
+        }
+        .services-cap{
+            h5{
+               a{
+                font-weight: 600;
+                font-size: 18px;
+                color: #001f38;
+                line-height: 1.4;
+                @include transition(.3s);
+               }
+            }
+            span{
+                color: #fb246a;
+                font-size:18px;
+            }
+        }
+        
+        // Hover Effect
+        &:hover {
+            box-shadow: 0px 10px 30px 0px rgba(133, 66, 189, 0.1);
+            .services-ion{
+                span{
+                    color:$theme-color;
+                }
+            }
+            .services-cap{
+               h5{
+                   a{
+                    color: $theme-color;
+                   }
+               }
+            }
+        }
+    }
+}
+
+

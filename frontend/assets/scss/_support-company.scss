@@ -1,0 +1,102 @@
+.support-company-area{
+    .support-location-img{
+		position: relative;
+        img{
+            width: 100%;
+        }
+        .support-img-cap{
+            position: absolute;
+			bottom: 0px;
+			background: #1f2b7b;
+			padding:59px 28px;
+			border-radius: 5px;
+			left: -100px;
+			@media #{$lg}{
+				padding: 27px 18px;
+				left: -59px;
+			}
+			@media #{$xs}{
+				left: 0px;
+				padding: 35px 0px;
+			}
+			@media #{$sm}{
+				left: 0px;
+				padding: 35px 18px;
+			}
+			@media #{$md}{
+				left: 0px;
+				padding: 35px 18px;
+			}
+            span{
+               
+                font-size: 60px;
+                color:#fff;
+                text-transform: uppercase;
+                font-weight: 700;
+				font-family: $font_1;
+				line-height: 1.2;
+				@media #{$xs}{
+					padding:6px 40px;
+					font-size: 38px;
+				}
+				@media #{$lg}{
+					font-size: 35px;
+				}
+				@media #{$md}{
+					font-size: 35px;
+				}
+				@media #{$sm}{
+					font-size: 35px;
+				}
+
+			}
+			P{
+				color: #fff;
+				line-height: 1;
+				margin: 0;
+				font-size: 20px;
+			}
+        }
+	}
+	// Right Content
+	.right-caption{
+		position: relative;
+		right: -50px;
+		@media #{$lg}{
+			right: -25px;
+		}
+		@media #{$sm}{
+			right: 0px;
+			margin-bottom: 40px;
+		}
+		@media #{$xs}{
+			right: 0px;
+			margin-bottom: 40px;
+		}
+		@media #{$md}{
+			right: 0px;
+			margin-bottom: 40px;
+		}
+		.support-caption{
+			padding-right: 144px;
+			@media #{$xs}{
+				padding-right: 0px;
+			  }
+			@media #{$sm}{
+				padding-right: 0px;
+			}
+			@media #{$lg}{
+				padding-right:70px;
+			}
+			p{
+				margin-bottom: 46px;
+				font-size: 15px;
+			}
+			p.pera-top{
+				font-size: 17px;
+				font-weight: 700;
+				color: #0b0b2b;
+			}
+		}
+	}
+}

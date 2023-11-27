@@ -1,0 +1,31 @@
+.online-cv{
+    @media #{$xs}{
+        padding-top: 80px;
+        padding-bottom: 90px;
+    }
+    .cv-caption{
+        .pera1{
+            font-family: $font_1;
+            color: #fff;
+            text-transform: uppercase;
+            @media #{$xs}{
+                margin-bottom: 25px;
+              }
+        }
+        .pera2{
+            font-family: $font_1;
+            color: #fff;  
+            font-weight: 700;
+            font-size: 60px;
+            line-height: 1.3;
+            margin-bottom: 51px;
+            @media #{$xs}{
+              font-size: 27px;
+            }
+        }
+    }
+}
+.cv-bg{
+    background-size: cover;
+    background-repeat: no-repeat;
+}
