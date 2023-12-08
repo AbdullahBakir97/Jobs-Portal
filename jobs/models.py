@@ -15,7 +15,7 @@ class Job(models.Model):
     salary = models.FloatField(_('Salary'),)
     created_at = models.DateTimeField(_('Created at'),default=timezone.now)
     vacancy = models.IntegerField(_('Vacancy'),)
-    job_nature = models.CharField(_('Job Nature'),max_length=20,choices=NATURE_TYPES)
+    job_nature = models.CharField(_('Job Nature'),max_length=20,choices=NATURE_TYPES) 
     application_date = models.DateField(_('Application Date'),)
     description = models.TextField(_('Description'),max_length=50000)
     knowledge_requirements = models.TextField(_('Knowledge Requirements'),max_length=10000)

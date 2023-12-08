@@ -1,5 +1,7 @@
 from django.urls import path
 from .views import JobList, JobDetail, JobCreate, JobUpdate, JobDelete, JobDeleteConfirm, CategoryList
+from .api import   JobListAPI , JobDetailAPI , CompanyListAPI , CompanyDetailAPI
+
 
 urlpatterns = [
     path('', JobList.as_view(), name='job_list'),
@@ -10,4 +12,9 @@ urlpatterns = [
     path('<slug:slug>/delete/', JobDelete.as_view(), name='delete_job'),
     path('<slug:slug>/delete/confirm/', JobDeleteConfirm.as_view(), name='delete_job_confirm'),
     
+
+    path('api/list' , JobListAPI.as_view()),
+    path('api/list/<int:pk>' , JobDetailAPI.as_view()),
+    path('api/list/company' , CompanyListAPI.as_view()),
+    path('api/list/company/<int:pk>' , CompanyDetailAPI.as_view()),
 ]
