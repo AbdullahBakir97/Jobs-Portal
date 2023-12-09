@@ -55,7 +55,7 @@ class JobCreateDetailDeleteAPI(generics.GenericAPIView):
         job_detail,created = JobDetailAPI.objects.get_or_create(job=job)
         return Response({'massege':'job was addedd successufly'})
 
-    def delete(self,request,*args, **kwargs):
+    def delete(self,request):
 
  
         job = JobDetailAPI.objects.get(id=request.data['job_id'])
