@@ -194,7 +194,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="count-job mb-35">
-                                            <span>39, 782 Jobs found</span>
+                                            <span>{{object.job_count}}</span>
                                             <!-- Select job items start -->
                                             <div class="select-job-items">
                                                 <span>Sort by</span>
@@ -243,24 +243,39 @@
         </div>
         <!-- Job List Area End -->
         <!--Pagination Start  -->
-        <div class="pagination-area pb-115 text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="single-wrap d-flex justify-content-center">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-start">
-                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-right"></span></a></li>
-                                </ul>
-                            </nav>
-                        </div>
+        {% if is_paginated %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="bottom-paginate">
+                        <p class="page-info">Showing 12 of 60 Results</p>
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{page_obj.previous_page_number}}">
+                                        <i class="fas fa-long-arrow-alt-left"></i>
+                                    </a>
+                                </li>
+                            {% endif %}   
+                            {% for i in paginator.page_range %}
+                            {% if page_obj.number == i %}
+                                <li class="page-item"><a class="page-link active" href="#">{{i}}</a></li>
+                            {% elif i > page_obj.number|add:'-4' and i < page_obj.number|add:'4' %}
+                                <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{page_obj.next_page_number}}">
+                                        <i class="fas fa-long-arrow-alt-right"></i>
+                                    </a>
+                                </li>
+                            {% endif %}    
+                        </ul>   
                     </div>
                 </div>
             </div>
-        </div>
+        {% endif %}
         <!--Pagination End  -->
         
     </main>

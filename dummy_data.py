@@ -58,6 +58,6 @@ def add_jobs(n):
         )
         print(f'{n} Jobs was created successfully')
 
-#add_companies(9)
-#add_categories(9)
-#add_jobs(9)
+add_companies()
+add_categories()
+add_jobs(0)

@@ -1,7 +1,10 @@
 from django.shortcuts import render , redirect
 from django.views import generic
 from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
 from django.views.generic import UpdateView
+from django.views.generic.edit import DeleteView
 from .models import Job, Category, Company
 from .forms import JobForm  
 
@@ -10,7 +13,7 @@ class JobList(generic.ListView):
     template_name = 'jobs/job_list.html'
 
 class JobDetail(generic.DetailView):
-    model = Job
+    model = Job  
     template_name = 'jobs/job_detail.html'
 
 class JobCreate(generic.CreateView):
@@ -20,6 +23,7 @@ class JobCreate(generic.CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        print("Form is valid. Saving data...")
         return super().form_valid(form)
 
 
@@ -30,25 +34,26 @@ class JobUpdate(UpdateView):
     success_url = '/jobs/'
 
 
-class JobDelete(generic.DeleteView):
+class JobDelete(DeleteView):
     model = Job
-    template_name = 'jobs/delete_job.html'
+    template_name = 'jobs/delete.html'
+    success_url = reverse_lazy('delete_confirm')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Job, slug=self.kwargs['job_slug'])
+
+class JobDeleteConfirm(DeleteView):
+    model = Job
+    template_name = 'jobs/delete_confirm.html'
     success_url = reverse_lazy('job_list')
 
-    #def get(self, request, *args, **kwargs):
-        # Display the initial delete page
-        #return render(request, self.template_name, {'job': self.get_object()})
+    def get_object(self, queryset=None):
+        return get_object_or_404(Job, slug=self.kwargs['job_slug'])
 
-class JobDeleteConfirm(generic.DeleteView):
-    model = Job
-    template_name = 'jobs/delete_job_confirm.html'
-    success_url = reverse_lazy('job_list')
-
-    def post(self, request, *args, **kwargs):
-        # Handle the actual deletion on a POST request
+    def delete(self, request, *args, **kwargs):
         job = self.get_object()
         job.delete()
-        return render(request, self.template_name, {'job': job})
+        return HttpResponseRedirect(self.success_url)
 
 
 

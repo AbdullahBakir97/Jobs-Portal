@@ -48,7 +48,7 @@
                 </ul>
               </div>
 
-              <button type="submit" class="btn mb-10"><a href="/jobs/delete/confirm/">Delete Job</a></button>
+              <button type="submit" class="btn mb-10"><a href="{% url 'delete_job_confirm' job.slug %}">Delete Job</a></button>
             </form>
           </div>
           <!-- Job Form End -->
