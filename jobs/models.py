@@ -18,8 +18,8 @@ class Job(models.Model):
     job_nature = models.CharField(_('Job Nature'),max_length=20,choices=NATURE_TYPES) 
     application_date = models.DateField(_('Application Date'),)
     description = models.TextField(_('Description'),max_length=50000)
-    knowledge_requirements = models.TextField(_('Knowledge Requirements'),max_length=10000)
-    education_experience = models.TextField(_('Education Experience'),max_length=10000)
+    knowledge_requirements = models.TextField(_('Knowledge & Requirements'),max_length=10000)
+    education_experience = models.TextField(_('Education & Experience'),max_length=10000)
     slug = models.SlugField(null=True,blank=True)
 
     def __str__(self):

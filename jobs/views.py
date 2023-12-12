@@ -23,8 +23,12 @@ class JobCreate(generic.CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        print("Form is valid. Saving data...")
+        if form.is_valid():
+            print("Form is valid. Saving data...")
+        else:
+            print("Form is invalid. Errors:", form.errors)
         return super().form_valid(form)
+  
 
 
 class JobUpdate(UpdateView):
