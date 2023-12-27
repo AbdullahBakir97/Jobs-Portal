@@ -1,7 +1,6 @@
 <form method="POST" action="{% if job.id %}{% url 'edit_job' job.id %}{% else %}{% url 'add_job' %}{% endif %}">
     {% csrf_token %}
     
-    <!-- Add/Edit Job Form Fields -->
     {{ form.as_p }}
 
     <button type="submit">{% if job.id %}Update Job{% else %}Add Job{% endif %}</button>
