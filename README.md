@@ -3,6 +3,7 @@
 [![Python](https://img.shields.io/badge/Python-3.12%2B-brightgreen)](https://www.python.org/)
 [![Django](https://img.shields.io/badge/Django-4.2%2B-brightgreen)](https://www.djangoproject.com/)
 
+<img src="https://techstack-generator.vercel.app/django-icon.svg" alt="icon" width="100" height="100" />
 # Empower Your Recruitment Journey with Jobs Portal
 
 Jobs Portal is a powerful platform for managing job listings, facilitating seamless recruitment processes, and connecting job seekers with potential employers. Built using Python, Django, and FastAPI, it offers a robust solution for handling diverse job opportunities.
