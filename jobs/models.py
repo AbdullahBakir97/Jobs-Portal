@@ -48,6 +48,7 @@ class Job(models.Model):
 
 
 class Category(models.Model):
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, null=True, blank=True, related_name='categories')
     name = models.CharField(_('Name'),max_length=150)
     image = models.ImageField(_('Image'),upload_to='categories')
     job_count = models.IntegerField(_('Job Count'),)
@@ -68,6 +69,7 @@ class Category(models.Model):
         return self.jobs.count()
 
 class Company(models.Model):
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, null=True, blank=True, related_name='companies')
     name = models.CharField(_('Name'),max_length=150)
     logo = models.ImageField(_('Logo'),upload_to='company')
     presentation = models.TextField(_('Presentation'),max_length=10000)

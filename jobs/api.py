@@ -12,7 +12,7 @@ class JobListAPI(generics.ListAPIView):
     serializer_class = JobListSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['job_nature', 'agency']
-    search_fields = ['title', 'location']  # Adjusted search fields
+    search_fields = ['title', 'location'] 
     ordering_fields = ['salary', 'vacancy']
     filterset_class = JobFilter
     pagination_class = MyPagination

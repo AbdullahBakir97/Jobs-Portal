@@ -46,6 +46,19 @@ class JobDelete(LoginRequiredMixin, DeleteView):
 
     def get_object(self, queryset=None):
         return get_object_or_404(Job, slug=self.kwargs['job_slug'])
+    
+class JobDeleteConfirm(DeleteView):
+    model = Job
+    template_name = 'jobs/delete_confirm.html'
+    success_url = reverse_lazy('job_list')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Job, slug=self.kwargs['job_slug'])
+
+    def delete(self, request, *args, **kwargs):
+        job = self.get_object()
+        job.delete()
+        return HttpResponseRedirect(self.success_url)
 
 # Category Views
 class CategoryList(ListView):

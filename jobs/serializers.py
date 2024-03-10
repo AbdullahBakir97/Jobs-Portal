@@ -11,7 +11,7 @@ class JobSerializer(serializers.ModelSerializer):
 class JobListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job
-        fields = ['id', 'title', 'location', 'salary', 'vacancy']
+        fields = '__all__'
 
 class JobDetailSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,7 +26,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class CategoryListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['id', 'name', 'job_count']
+        fields = '__all__'
 
 class CategoryDetailSerializer(serializers.ModelSerializer):
     class Meta:
@@ -41,7 +41,7 @@ class CompanySerializer(serializers.ModelSerializer):
 class CompanyListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
-        fields = ['id', 'name', 'presentation', 'website', 'email']
+        fields = '__all__'
 
 class CompanyDetailSerializer(serializers.ModelSerializer):
     class Meta:
