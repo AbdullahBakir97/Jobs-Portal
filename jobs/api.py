@@ -1,63 +1,55 @@
-from rest_framework import generics , filters
+from rest_framework import generics, filters
 from rest_framework.response import Response
-from django.contrib.auth.models import User
-from django_filters.rest_framework import DjangoFilterBackend 
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.permissions import IsAuthenticated
-from .serializers import JobSerializer , JobListSerializer , JobDetailSerializer , CompanyListSerializer , CompanyDetailSerializer
-from .models import Job , Company , Category
+from .serializers import JobSerializer, JobListSerializer, JobDetailSerializer, CompanyListSerializer, CompanyDetailSerializer, CompanySerializer
+from .models import Job, Company
 from .myfilter import JobFilter
 from .mypagination import MyPagination
-
 
 class JobListAPI(generics.ListAPIView):
     queryset = Job.objects.all()
     serializer_class = JobListSerializer
-    filter_backends = [DjangoFilterBackend , filters.SearchFilter , filters.OrderingFilter]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['job_nature', 'agency']
-    search_fields = ['title', 'category', 'location']
+    search_fields = ['title', 'location']  # Adjusted search fields
     ordering_fields = ['salary', 'vacancy']
     filterset_class = JobFilter
     pagination_class = MyPagination
 
-
-
 class JobDetailAPI(generics.RetrieveAPIView):
     queryset = Job.objects.all()
     serializer_class = JobDetailSerializer
-
 
 class CompanyListAPI(generics.ListAPIView):
     queryset = Company.objects.all()
     serializer_class = CompanyListSerializer
     pagination_class = MyPagination
 
-
-
 class CompanyDetailAPI(generics.RetrieveAPIView):
     queryset = Company.objects.all()
     serializer_class = CompanyDetailSerializer
 
-
-class JobCreateDetailDeleteAPI(generics.GenericAPIView):
+class JobCreateAPI(generics.CreateAPIView):
+    queryset = Job.objects.all()
     serializer_class = JobSerializer
 
-    def get(self,request):
-        
-        job , created = Job.objects.get_or_create()
-        data = JobSerializer(job).data
-        return Response({'job':data})
-    
-    def post(self,request):
+    def perform_create(self, serializer):
+        serializer.save()
 
-        job = Job.objects.get(id=request.data['job_id'])
-        vacancy = int(request.data['vacancy'])
+class JobDetailAPI(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Job.objects.all()
+    serializer_class = JobSerializer
+    permission_classes = [IsAuthenticated]
 
-        job_detail,created = JobDetailAPI.objects.get_or_create(job=job)
-        return Response({'massege':'job was addedd successufly'})
+class CompanyCreateAPI(generics.CreateAPIView):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
 
-    def delete(self,request):
+    def perform_create(self, serializer):
+        serializer.save()
 
- 
-        job = JobDetailAPI.objects.get(id=request.data['job_id'])
-        job.delete()
-        return Response({'massage':'job was deleted successfuly'})
+class CompanyDetailAPI(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+    permission_classes = [IsAuthenticated]
