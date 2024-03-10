@@ -5,7 +5,12 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
-NATURE_TYPES = (('Full Time','Full Time'),('Part Time','Part Time'),('Remote','Remote'),('Freelance','Freelance'),)
+NATURE_TYPES = (
+    ('Full Time','Full Time'),
+    ('Part Time','Part Time'),
+    ('Remote','Remote'),
+    ('Freelance','Freelance'),
+    )
 
 class Job(models.Model):
     title = models.CharField(_('Title'),max_length=150)
@@ -22,12 +27,24 @@ class Job(models.Model):
     education_experience = models.TextField(_('Education & Experience'),max_length=10000)
     slug = models.SlugField(null=True,blank=True)
 
+    class Meta:
+        ordering = ['-created_at']
+
     def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title) 
-        super(Job, self).save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(self.title)
+            original_slug = self.slug
+            counter = 1
+            while Job.objects.filter(slug=self.slug).exists():
+                self.slug = f'{original_slug}-{counter}'
+                counter += 1
+        super().save(*args, **kwargs)
+
+    def applications_count(self):
+        return self.job_applications.count()
 
 
 class Category(models.Model):
@@ -36,12 +53,19 @@ class Category(models.Model):
     job_count = models.IntegerField(_('Job Count'),)
     slug = models.SlugField(null=True,blank=True)
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super(Category, self).save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def total_jobs(self):
+        return self.jobs.count()
 
 class Company(models.Model):
     name = models.CharField(_('Name'),max_length=150)
@@ -51,12 +75,19 @@ class Company(models.Model):
     email = models.TextField(_('Email'),max_length=300)
     slug = models.SlugField(null=True,blank=True)
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)   
-        super(Company, self).save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def total_jobs(self):
+        return self.jobs.count()
 
 
         
